@@ -46,10 +46,10 @@ class Ball:
 		self.ball = ball
 	def getBall(self):
 		return self.ball
-	def getBallXCord():
-		return self.ball.getX()
-	def getBallYCord():
-		return self.ball.getY()
+	def getBallXCord(self):
+		return self.ball.getCenter().getX()
+	def getBallYCord(self):
+		return self.ball.getCenter().getY()
 def main():
 		width = 1600
 		height = 800
@@ -64,10 +64,47 @@ def main():
 		moveDist = height / 20
 		ball = Ball(win, ballCenter, ballRadius)
 		getBall = ball.getBall()
+		sideDirection = "right"
+		vertDirection = "down"
 		while True:
-			if ball.getBallXCord() + moveDist < 
-			getBall().move(moveDist, 0)
-			key = win.getKey()
+			if sideDirection == "right":
+				if vertDirection == "up":
+					if ball.getBallXCord() + moveDist < width and ball.getBallYCord() - moveDist > 0:
+						getBall.move(moveDist, -moveDist)
+						time.sleep(0.15)
+					else:
+						if ball.getBallYCord() + moveDist - ballRadius == rightPaddle.getP1Y():
+							sideDirection == "left"
+						elif ball.getBallYCord() + moveDist - ballRadius > rightPaddle.getP1Y():
+							
+						else:
+							ballDistToTop = ball.getBallYCord()
+							getBall.move(moveDist, -ballDistToTop + ballRadius)
+							time.sleep(0.15)
+						vertDirection = "down"
+				elif vertDirection == "down":
+					if ball.getBallXCord() + moveDist < width and ball.getBallYCord() + moveDist < height:
+						getBall.move(moveDist, moveDist)
+						time.sleep(0.15)
+					else:
+						ballDistToBottom = height - ball.getBallYCord()
+						getBall.move(moveDist, ballDistToBottom - ballRadius)
+						vertDirection = "up"
+			elif sideDirection == "left":
+				if vertDirection == "up":
+					if ball.getBallXCord() - moveDist > 0 and ball.getBallYCord() - moveDist > 0:
+						getBall.move(-moveDist, -moveDist)
+						time.sleep(0.15)
+				elif vertDirection == "down":
+					if ball.getBallXCord() - moveDist > 0 and ball.getBallYCord() + moveDist < height:
+						getBall.move(-moveDist, moveDist)
+						time.sleep(0.15)
+
+
+
+
+
+			key = win.checkKey()
 			if key == "Escape":
 				win.close()
 			if key == "a":
