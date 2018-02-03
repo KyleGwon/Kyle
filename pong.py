@@ -69,21 +69,23 @@ def main():
 		while True:
 			if sideDirection == "right":
 				if vertDirection == "up":
-					if ball.getBallXCord() + moveDist < width and ball.getBallYCord() - moveDist > 0:
-						getBall.move(moveDist, -moveDist)
-						time.sleep(0.15)
+					if ball.getBallXCord() - moveDist - ballRadius > 0:
+						if ball.getBallYCord() + moveDist + ballRadius < rPaddle.getP1Y():
+							getBall.move(moveDist, -moveDist)
+							time.sleep(0.15)
+						elif ball.getBallYCord() + moveDist + ballRadius > rPaddle.
 					else:
 						if ball.getBallYCord() + moveDist - ballRadius == rightPaddle.getP1Y():
 							sideDirection == "left"
 						elif ball.getBallYCord() + moveDist - ballRadius > rightPaddle.getP1Y():
-							
+							print("HI")
 						else:
 							ballDistToTop = ball.getBallYCord()
 							getBall.move(moveDist, -ballDistToTop + ballRadius)
 							time.sleep(0.15)
 						vertDirection = "down"
 				elif vertDirection == "down":
-					if ball.getBallXCord() + moveDist < width and ball.getBallYCord() + moveDist < height:
+					if ball.getBallXCord() + moveDist + < height and ball.getBallYCord() + moveDist < height:
 						getBall.move(moveDist, moveDist)
 						time.sleep(0.15)
 					else:
