@@ -1,4 +1,3 @@
-#Hi
 from graphics import *
 import random
 import time
@@ -63,8 +62,8 @@ class Ball:
 	def getBallYCord(self):
 		return self.ball.getCenter().getY()
 def main():
-		width = 1600
-		height = 800
+		width = 800
+		height = 400
 		win = GraphWin("Turtle Pong", width, height)
 		dimensions = [width / 200, height / 6]
 		leftPaddle = LeftPaddle(win, dimensions)
