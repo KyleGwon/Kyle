@@ -1,4 +1,3 @@
-#This program MIGHT be finished
 from graphics import *
 import random
 import time
