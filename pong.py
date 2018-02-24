@@ -1,4 +1,3 @@
-#Finished
 from graphics import *
 import random
 import time
